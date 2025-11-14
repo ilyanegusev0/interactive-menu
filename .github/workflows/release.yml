@@ -1,28 +1,42 @@
-name: Release
+name: Manual Release
 
 on:
-    push:
-        branches:
-            - main
+  push:
+    tags:
+      - 'v*.*.*'   # запуск при пуше тега
 
 jobs:
-    release:
-        name: Release
-        runs-on: ubuntu-latest
+  build-and-release:
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
 
-            - name: Run Release Please
-              uses: google-github-actions/release-please-action@v4
-              with:
-                  release-type: simple
-                  package-name: interactive-menu
-                  changelog-types: |
-                      [
-                          {"type":"feat","section":"Features","hidden":false},
-                          {"type":"fix","section":"Bug Fixes","hidden":false},
-                          {"type":"docs","section":"Documentation","hidden":false},
-                          {"type":"chore","section":"Chores","hidden":true}
-                      ]
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build project
+        run: dotnet build --configuration Release
+
+      - name: Run tests
+        run: dotnet test --configuration Release
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          body: |
+            ## What's new
+            - Manually curated changelog here
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload artifacts
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            InteractiveMenu/bin/Release/**/*.dll
