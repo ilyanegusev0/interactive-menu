@@ -69,7 +69,7 @@ namespace InteractiveMenu
             }
         }
 
-        // private
+        // private 
 
         private static bool IsSelectable(MenuItem item) => item.IsSelectable;
 
