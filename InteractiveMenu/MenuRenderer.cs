@@ -28,7 +28,7 @@ namespace InteractiveMenu
                 if (item.IsSelectable && i == selectedIndex)
                     Console.ForegroundColor = _configuration.SelectedColor;
                 else
-                    Console.ForegroundColor = _configuration.DefaultColor;
+                    Console.ForegroundColor = item.Color;
 
                 if (item is EmptyItem emptyItem)
                 {
