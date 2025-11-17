@@ -1,6 +1,6 @@
 ## Quick start:
 
-```
+```csharp
 Menu menu = new Menu();
 
 List<MenuItem> items = new List<MenuItem>()
