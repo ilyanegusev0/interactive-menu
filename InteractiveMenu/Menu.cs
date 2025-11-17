@@ -1,6 +1,6 @@
 ﻿using InteractiveMenu.Items;
 
-namespace InteractiveMenu.InteractiveMenu
+namespace InteractiveMenu
 {
     public class Menu
     {
