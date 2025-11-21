@@ -32,6 +32,26 @@ namespace InteractiveMenu
             get => _configuration.Selector;
             set => _configuration.Selector = value;
         }
+        public ConsoleKey KeyUp
+        {
+            get => _configuration.KeyUp;
+            set => _configuration.KeyUp = value;
+        }
+        public ConsoleKey KeyDown
+        {
+            get => _configuration.KeyDown;
+            set => _configuration.KeyDown = value;
+        }
+        public ConsoleKey KeySelect
+        {
+            get => _configuration.KeySelect;
+            set => _configuration.KeySelect = value;
+        }
+        public ConsoleKey KeyCancel
+        {
+            get => _configuration.KeyCancel;
+            set => _configuration.KeyCancel = value;
+        }
 
         // CONSTRUCTORS:
 

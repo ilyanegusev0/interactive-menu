@@ -32,21 +32,21 @@ namespace InteractiveMenu
             {
                 _renderer.Draw(items, selectedIndex, startRow);
 
-                ConsoleKeyInfo key = Console.ReadKey();
+                ConsoleKeyInfo key = Console.ReadKey(true);
 
                 switch (key.Key)
                 {
-                    case ConsoleKey.UpArrow:
+                    case var k when k == _configuration.KeyUp:
                         selectedIndex = Navigate(items, selectedIndex, -1);
 
                         break;
 
-                    case ConsoleKey.DownArrow:
+                    case var k when k == _configuration.KeyDown:
                         selectedIndex = Navigate(items, selectedIndex, 1);
 
                         break;
 
-                    case ConsoleKey.Enter:
+                    case var k when k == _configuration.KeySelect:
                         Console.CursorVisible = true;
 
                         var selectedItem = items[selectedIndex] as OptionItem;
@@ -62,7 +62,7 @@ namespace InteractiveMenu
 
                         break;
 
-                    case ConsoleKey.Escape:
+                    case var k when k == _configuration.KeyCancel:
                         Console.CursorVisible = true;
                         return null;
                 }
