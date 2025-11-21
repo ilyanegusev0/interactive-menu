@@ -28,8 +28,6 @@ switch(result)
 }
 ```
 
-Restaurant restaurant = new Restaurant();
-
 ## Methods:
 
 - `Show(List<MenuItem> items)` - displays the interactive menu and returns the selected result.
@@ -55,7 +53,11 @@ Restaurant restaurant = new Restaurant();
         
 ## Configuration options:
 
-- `DefaultColor` - text color for non-selected items.
-- `SelectedColor` - highlight color for selected items.
-- `IsShowSelector` - toggle selector visibility.
-- `Selector` - customize selector symbol.
+- `DefaultColor` - text color for non-selected items. (`ConsoleColor.Gray` by default)
+- `SelectedColor` - highlight color for selected items. (`ConsoleColor.Green` by default)
+- `IsShowSelector` - toggle selector visibility. (`true` by default)
+- `Selector` - customize selector symbol. (`" <"` by default)
+- `KeyUp` - key used to move selection up. (`ConsoleKey.UpArrow` by default)
+- `KeyDown` - key used to move selection down. (`ConsoleKey.DownArrow` by default)
+- `KeySelect` - key used to select the current item. (`ConsoleKey.Enter` by default)
+- `KeyCancel` - key used to cancel or exit the meny. (`ConsoleKey.Escape` by default)
