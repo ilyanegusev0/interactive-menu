@@ -29,8 +29,9 @@ switch(result)
 ```
 
 ## Methods:
-
-- `Show(List<MenuItem> items)` - displays the interactive menu and returns the selected result.
+- `Show()` - displays the menu and returns the selected result.
+>`Show(params IEnumerable<MenuItem> lists)` - displays the interactive menu and returns the selected result.\
+`Show(params MenuItem[] items)`
 
 ## Items:
 
