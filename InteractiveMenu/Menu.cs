@@ -64,9 +64,13 @@ namespace InteractiveMenu
 
         // METHODS:
 
-        public object? Show(List<MenuItem> items)
+        public object? Show(params IEnumerable<MenuItem>[] lists)
         {
-            return _controller.Run(items);
+            var merged = new List<MenuItem>();
+            foreach (var list in lists)
+                merged.AddRange(list);
+
+            return _controller.Run(merged);
         }
     }
 }
