@@ -72,5 +72,7 @@ namespace InteractiveMenu
 
             return _controller.Run(merged);
         }
+
+        public object? Show(params MenuItem[] items) => Show(items.AsEnumerable());
     }
 }
