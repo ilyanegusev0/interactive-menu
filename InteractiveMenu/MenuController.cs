@@ -49,15 +49,21 @@ namespace InteractiveMenu
                     case var k when k == _configuration.KeySelect:
                         Console.CursorVisible = true;
 
-                        var selectedItem = items[selectedIndex] as OptionItem;
-                        if (selectedItem != null)
+                        var selectedItem = items[selectedIndex];
+                        if (selectedItem is OptionItem optionitem)
                         {
-                            if (selectedItem.Value != null)
-                                return selectedItem.Value;
+                            if (optionitem.Value != null)
+                                return optionitem.Value;
 
-                            int logicalIndex = items.OfType<OptionItem>().ToList().IndexOf(selectedItem);
+                            int logicalIndex = items.OfType<OptionItem>().ToList().IndexOf(optionitem);
 
                             return logicalIndex;
+                        }
+                        else if (selectedItem is ActionItem actionItem)
+                        {
+                            actionItem.Execute();
+
+                            return null;
                         }
 
                         break;
