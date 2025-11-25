@@ -61,9 +61,7 @@ namespace InteractiveMenu
                         }
                         else if (selectedItem is ActionItem actionItem)
                         {
-                            actionItem.Execute();
-
-                            return null;
+                            return actionItem.Execute();
                         }
 
                         break;
